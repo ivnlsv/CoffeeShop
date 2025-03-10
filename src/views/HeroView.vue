@@ -58,7 +58,11 @@
 				<div class="title">Our best</div>
 				<div class="row">
 					<div class="col-lg-10 offset-lg-1">
-						<best-item-component />
+						<div class="best__wrapper">
+							<product-card />
+							<product-card />
+							<product-card />
+						</div>
 					</div>
 				</div>
 			</div>
@@ -67,9 +71,9 @@
 </template>
 <script>
 import NavBarComponent from '@/components/NavBarComponent.vue';
-import BestItemComponent from '@/components/BestItemComponent.vue';
+import ProductCard from '@/components/ProductCard.vue';
 
 export default {
-	components: { NavBarComponent, BestItemComponent },
+	components: { NavBarComponent, ProductCard },
 };
 </script>
