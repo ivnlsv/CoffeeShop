@@ -4,10 +4,10 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6">
-                        <nav-bar-component />
-                    </div>
+						<nav-bar-component />
+					</div>
 				</div>
-				<h1 class="title-big">Thank you</h1>
+				<header-title :text="text" />
 			</div>
 		</div>
 		<section class="contacts">
@@ -37,9 +37,15 @@
 	</main>
 </template>
 <script>
+import HeaderTitle from '@/components/HeaderTitle.vue';
 import NavBarComponent from '@/components/NavBarComponent.vue';
 
 export default {
-	components: { NavBarComponent },
+	components: { NavBarComponent, HeaderTitle },
+	data() {
+		return {
+			text: 'Thank you',
+		};
+	},
 };
 </script>

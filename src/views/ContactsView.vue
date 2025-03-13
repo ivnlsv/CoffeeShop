@@ -7,7 +7,7 @@
 						<nav-bar-component />
 					</div>
 				</div>
-				<h1 class="title-big">Contact us</h1>
+				<header-title :text="text" />
 			</div>
 		</div>
 		<section class="contacts">
@@ -86,10 +86,15 @@
 	</main>
 </template>
 <script>
+import HeaderTitle from '@/components/HeaderTitle.vue';
 import NavBarComponent from '@/components/NavBarComponent.vue';
 
 export default {
-	components: { NavBarComponent },
-	
+	components: { NavBarComponent, HeaderTitle },
+	data() {
+		return {
+			text: 'Contact us',
+		};
+	},
 };
 </script>

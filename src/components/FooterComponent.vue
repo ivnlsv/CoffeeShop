@@ -6,18 +6,27 @@
 					<ul class="footer d-flex flex-wrap">
 						<li class="footer__item">
 							<router-link :to="links[0].link">
-								<img :src="require(`@/assets/logo/${links[0].icon}`)" :alt="links[0].icon" />
+								<img
+									:src="require(`@/assets/logo/${links[0].icon}`)"
+									:alt="links[0].icon"
+								/>
 							</router-link>
 						</li>
-						<li class="footer__item">
-						<router-link :to="links[1].link">{{links[1].text}}</router-link>	
-						</li>
-						<li class="footer__item">
-						<router-link :to="links[2].link">{{links[2].text}}</router-link>	
-						</li>
-						<li class="footer__item">
-						<router-link :to="links[3].link">{{links[3].text}}</router-link>	
-						</li>
+						<nav-links
+							classItem="footer__item"
+							:link="links[1].link"
+							:title="links[1].text"
+						/>
+						<nav-links
+							classItem="footer__item"
+							:link="links[2].link"
+							:title="links[2].text"
+						/>
+						<nav-links
+							classItem="footer__item"
+							:link="links[3].link"
+							:title="links[3].text"
+						/>
 					</ul>
 				</div>
 			</div>
@@ -30,32 +39,34 @@
 	</footer>
 </template>
 <script>
+import NavLinks from '@/components/NavLinks.vue';
 export default {
-	data() { 
+	components: { NavLinks },
+	data() {
 		return {
 			links: [
 				{
 					id: 0,
 					link: '/',
-					icon: 'Logo_black.svg'			
+					icon: 'Logo_black.svg',
 				},
 				{
 					id: 1,
 					text: 'Our coffee',
-					link:'/our-coffee'			
+					link: '/our-coffee',
 				},
 				{
 					id: 2,
 					text: 'For your pleasure',
-					link:'/goods'			
+					link: '/goods',
 				},
 				{
 					id: 3,
 					text: 'Contact us',
-					link:'/contacts'			
+					link: '/contacts',
 				},
-			]
-		}
-	}
-}
+			],
+		};
+	},
+};
 </script>
