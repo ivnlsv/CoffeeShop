@@ -61,22 +61,13 @@
 						<div class="best__wrapper">
 							<product-card
 							    classItem="best__item"
-								:title="ourbest[0].title"
-								:price="ourbest[0].price"
-								:img="ourbest[0].img"
+								v-for="coffee in ourbest"
+								:key = "coffee.id"
+								:title="coffee.title"
+								:price="coffee.price"
+								:img="coffee.img"
 							/>
-							<product-card
-							     classItem="best__item"
-								:title="ourbest[1].title"
-								:price="ourbest[1].price"
-								:img="ourbest[1].img"
-							/>
-							<product-card
-							     classItem="best__item"
-								:title="ourbest[2].title"
-								:price="ourbest[2].price"
-								:img="ourbest[2].img"
-							/>
+							
 						</div>
 					</div>
 				</div>
