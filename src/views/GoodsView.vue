@@ -50,7 +50,7 @@
 						<div class="shop__wrapper">
 							<product-card
 							    classItem="shop__item"
-								v-for="coffee in goods"
+								v-for="coffee in goodsItems"
 								:key = "coffee.id"
 								:title="coffee.title"
 								:price="coffee.price"
@@ -68,49 +68,18 @@ import HeaderTitle from '@/components/HeaderTitle.vue';
 import NavBarComponent from '@/components/NavBarComponent.vue';
 import ProductCard from '@/components/ProductCard.vue';
 export default {
-	components: { NavBarComponent, ProductCard, HeaderTitle },
 	data() {
 		return {
 			text: 'For your pleasure',
-			goods: [
-				{
-					id: 0,
-					title: 'Solimo Coffee Beans 2kg',
-					price: '10.73',
-					img: 'coffee-1.jpg',
-				},
-				{
-					id: 1,
-					title: 'Presto Coffee Beans 1kg',
-					price: '15.99',
-					img: 'coffee-2.jpg',
-				},
-				{
-					id: 2,
-					title: ' AROMISTICO Coffee 1kg',
-					price: '6.99',
-					img: 'coffee-3.jpg',
-				},
-				{
-					id: 3,
-					title: 'Solimo Coffee Beans 2kg',
-					price: '10.73',
-					img: 'coffee-3.jpg',
-				},
-				{
-					id: 4,
-					title: 'Solimo Coffee Beans 2kg',
-					price: '10.73',
-					img: 'coffee-3.jpg',
-				},
-				{
-					id: 5,
-					title: ' AROMISTICO Coffee 1kg',
-					price: '10.73',
-					img: 'coffee-3.jpg',
-				},
-			],
+			
 		};
-	},
+	}, 
+	components: { NavBarComponent, ProductCard, HeaderTitle },
+	computed: {
+		goodsItems() { 
+			return this.$store.getters['getGoodsItems']
+		}
+	} 
+	  
 };
 </script>

@@ -24,7 +24,12 @@
 import NavLinks from '@/components/NavLinks.vue';
 export default {
 	components: { NavLinks },
-	data() {
+	computed: {
+		links() {
+			return this.$store.getters['getHeaderLinks'];
+		},
+	},
+	/* data() {
 		return {
 			links: {
 				header: {
@@ -51,6 +56,6 @@ export default {
 				],
 			},
 		};
-	},
+	},  */
 };
 </script>

@@ -66,7 +66,7 @@
 						<div class="best__wrapper">
 							<product-card
 								classItem="best__item"
-								v-for="coffee in ourbest"
+								v-for="coffee in ourBest"
 								:key="coffee.id"
 								:title="coffee.title"
 								:price="coffee.price"
@@ -89,28 +89,14 @@ export default {
 	data() {
 		return {
 			text: 'Everything You Love About Coffee',
-			ourbest: [
-				{
-					id: 0,
-					title: 'Solimo Coffee Beans 2kg',
-					price: 10.73,
-					img: 'coffee-1.jpg',
-				},
-				{
-					id: 1,
-					title: 'Presto Coffee Beans 1kg',
-					price: 15.99,
-					img: 'coffee-2.jpg',
-				},
-				{
-					id: 2,
-					title: ' AROMISTICO Coffee 1kg',
-					price: 6.99,
-					img: 'coffee-3.jpg',
-				},
-			],
+			
 		};
 	},
+	computed: {
+		ourBest() { 
+			return this.$store.getters['getOurBest']
+		}
+	}, 
 	methods: {
 		smoothScroll() {
 			scrollIntoView(this.$refs.ourBest, {
