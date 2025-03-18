@@ -42,7 +42,15 @@ const ourCoffee = {
     getters: {
         getOurCoffeeItems(state) {
             return state.ourcoffee
-        }
+        },
+        getProductById(state) { 
+            return (id) => { 
+                return state.ourcoffee.find((card) => card.id === +id)
+            }
+        },
+        getCoffeeById: (state) => (id) => {
+            return state.ourcoffee.find(coffee => coffee.id === id);
+        },
     },
 }
 export default ourCoffee

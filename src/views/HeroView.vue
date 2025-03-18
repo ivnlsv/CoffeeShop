@@ -66,11 +66,9 @@
 						<div class="best__wrapper">
 							<product-card
 								classItem="best__item"
-								v-for="coffee in ourBest"
-								:key="coffee.id"
-								:title="coffee.title"
-								:price="coffee.price"
-								:img="coffee.img"
+								v-for="card in ourBest"
+								:key="card.id"
+								:card="card"
 							/>
 						</div>
 					</div>
