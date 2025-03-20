@@ -169,7 +169,9 @@ export default {
 			const isFormCorrect = await this.v$.$validate();
 
 			if (!isFormCorrect || !this.isChecked) {
-				console.log('Ошибка отправки', this.isChecked);
+				console.log('Ошибка отправки');
+			} else { 
+				console.log('Форма отправлена')
 			}
 		},
 	},
