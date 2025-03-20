@@ -153,3 +153,12 @@ input {
     margin-top: 40px;
     border-color: rgba(0, 0, 0, 0.49) !important;
 }
+.checkbox-box {
+    display: flex;
+    flex-direction: column;
+}
+.checkbox-items label{
+    font-family: "Merienda";
+    
+    padding-left: 10px;
+}
