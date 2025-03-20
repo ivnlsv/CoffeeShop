@@ -87,22 +87,19 @@ export default {
 	data() {
 		return {
 			text: 'Everything You Love About Coffee',
-			
 		};
 	},
 	computed: {
-		ourBest() { 
-			return this.$store.getters['getOurBest']
-		}
-	}, 
+		ourBest() {
+			return this.$store.getters['getOurBest'];
+		},
+	},
 	methods: {
 		smoothScroll() {
 			scrollIntoView(this.$refs.ourBest, {
 				behavior: 'smooth',
 				block: 'start',
-				
 			});
-		
 		},
 	},
 
