@@ -42,7 +42,11 @@ const goodsItems = {
     getters: {
         getGoodsItems(state) {
             return state.coffee
-        }
+        },
+        
+        getGoodsById: (state) => (id) => {
+            return state.coffee.find(goods => goods.id === id);
+        },
     },
 }
 

@@ -16,11 +16,14 @@ const routes = [
 	{ path: '/contacts', component: ContactsView },
 	{ path: '/thank-you', component: ThanksView },
 	{ path: '/item', component: ItemView },
+	{ name: 'coffee', path: '/our-coffee/:id', component: ItemView },
+	{ name: 'goods', path: '/goods/:id', component: ItemView }
 ];
 
 const router = new VueRouter({
 	mode: 'history',
 	routes,
 });
+
 
 export default router;

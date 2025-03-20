@@ -49,12 +49,11 @@
 					<div class="col-lg-10 offset-lg-1">
 						<div class="shop__wrapper">
 							<product-card
-							    classItem="shop__item"
-								v-for="coffee in goodsItems"
-								:key = "coffee.id"
-								:title="coffee.title"
-								:price="coffee.price"
-								:img="coffee.img"
+								classItem="shop__item"
+								v-for="card in goodsItems"
+								:key="card.id"
+								:card="card"
+								@onNavigate="navigate"
 							/>
 						</div>
 					</div>
@@ -67,19 +66,20 @@
 import HeaderTitle from '@/components/HeaderTitle.vue';
 import NavBarComponent from '@/components/NavBarComponent.vue';
 import ProductCard from '@/components/ProductCard.vue';
+import { navigate } from '@/mixins/navigate';
 export default {
 	data() {
 		return {
 			text: 'For your pleasure',
-			
+			name: 'goods',
 		};
-	}, 
+	},
 	components: { NavBarComponent, ProductCard, HeaderTitle },
 	computed: {
-		goodsItems() { 
-			return this.$store.getters['getGoodsItems']
-		}
-	} 
-	  
+		goodsItems() {
+			return this.$store.getters['getGoodsItems'];
+		},
+	},
+	mixins: [navigate],
 };
 </script>
