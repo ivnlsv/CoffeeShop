@@ -70,13 +70,12 @@
 					<div class="col-lg-10 offset-lg-1">
 						<div class="shop__wrapper">
 							<product-card
-							    classItem="shop__item"
+								classItem="shop__item"
 								v-for="card in ourCoffee"
-								:key = "card.id"
+								:key="card.id"
 								:card="card"
 								@onNavigate="navigate"
 							/>
-							
 						</div>
 					</div>
 				</div>
@@ -89,20 +88,28 @@ import HeaderTitle from '@/components/HeaderTitle.vue';
 import NavBarComponent from '@/components/NavBarComponent.vue';
 import ProductCard from '@/components/ProductCard.vue';
 import { navigate } from '@/mixins/navigate';
+import ourCoffee from '@/store/ourcoffee';
 
 export default {
 	components: { NavBarComponent, ProductCard, HeaderTitle },
 	data() {
 		return {
 			text: 'Our Coffee',
-			name: 'coffee'
+			name: 'coffee',
 		};
 	},
 	computed: {
-		ourCoffee() { 
-			return this.$store.getters['getOurCoffeeItems']
-		}
+		ourCoffee() {
+			return this.$store.getters['getOurCoffeeItems'];
+		},
 	},
-	mixins: [navigate]
+	mixins: [navigate],
+	mounted() {
+		fetch('http://localhost:3000/coffee')
+			.then((res) => res.json())
+			.then((data) => {
+				this.$store.dispatch('setCoffeeData', data);
+			});
+	},
 };
 </script>

@@ -190,6 +190,7 @@ body {
 .shop__girl {
   display: block;
   margin: 0 auto;
+  width: 272px;
 }
 .shop__text {
   margin-top: 25px;

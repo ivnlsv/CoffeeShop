@@ -31,6 +31,8 @@
     &__girl {
         display: block;
         margin: 0 auto;
+        width: 272px;
+        
     }
     &__text {
         margin-top: 25px;
@@ -104,6 +106,7 @@
             width: 151px;
             height: 130px;
             object-fit: cover;
+            
         }
         &-title, &-price, &-country {
             font-size: 14px;

@@ -9,6 +9,24 @@ import ourBest from './ourbest'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+    state: {
+		isLoading: false,
+	},
+	mutations: {
+		setIsLoading(state, value) {
+			state.isLoading = value;
+		},
+	},
+	actions: {
+        setIsLoading({ commit }, value ) {
+			commit('setIsLoading', value);
+		},
+	},
+	getters: {
+		getIsLoading(state) {
+			return state.isLoading;
+		},
+	},
     modules: {
         links,
         goodsItems,

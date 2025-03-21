@@ -87,27 +87,31 @@ export default {
 	data() {
 		return {
 			text: 'Everything You Love About Coffee',
-			
 		};
 	},
 	computed: {
-		ourBest() { 
-			return this.$store.getters['getOurBest']
-		}
-	}, 
+		ourBest() {
+			return this.$store.getters['getOurBest'];
+		},
+	},
 	methods: {
 		smoothScroll() {
 			scrollIntoView(this.$refs.ourBest, {
 				behavior: 'smooth',
 				block: 'start',
-				
 			});
-		
 		},
 	},
 
 	mounted() {
 		this.smoothScroll;
+	},
+	mounted() {
+		fetch('http://localhost:3000/bestsellers')
+			.then((res) => res.json())
+			.then((data) => {
+				this.$store.dispatch('setBestsellersData', data);
+			});
 	},
 };
 </script>

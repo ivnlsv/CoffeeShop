@@ -168,11 +168,20 @@ export default {
 		async submit() {
 			const isFormCorrect = await this.v$.$validate();
 
-			if (!isFormCorrect || !this.isChecked) {
-				console.log('Ошибка отправки');
-			} else { 
-				console.log('Форма отправлена')
+			if (!isFormCorrect || !this.isChecked) return
+			const message = {
+				name: this.name,
+				email: this.email,
+				phone: this.phone,
+				message: this.message
 			}
+			fetch('http://localhost:3000/contacts', {
+				method: 'POST',
+				headers: {
+					'Content-type' : 'application/json'
+				},
+				body: JSON.stringify(message)
+			}) 
 		},
 	},
 };
