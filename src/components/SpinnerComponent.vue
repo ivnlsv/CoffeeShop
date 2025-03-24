@@ -29,7 +29,7 @@
     left: 14.5px;
     border-radius: 50%;
     border: 5px solid #000;
-    border-color: #ac5b39 transparent #ac5b39 transparent;
+    border-color: #04146e transparent #04146e transparent;
     animation: ldio-jw37a2op4sd 1s linear infinite;
   }
   .ldio-jw37a2op4sd > div:nth-child(2) {
@@ -50,14 +50,14 @@
     height: 5px;
     top: -5px;
     left: 28px;
-    background: #ac5b39;
+    background: #04146e;
     border-radius: 50%;
-    box-shadow: 0 66px 0 0 #ac5b39;
+    box-shadow: 0 66px 0 0 #04146e;
   }
   .ldio-jw37a2op4sd > div:nth-child(2) div:after {
     left: -5px;
     top: 28px;
-    box-shadow: 66px 0 0 0 #ac5b39;
+    box-shadow: 66px 0 0 0 #04146e;
   }
   .loadingio-spinner-dual-ring-pv9b1oqrhi {
     width: 70px;
@@ -78,8 +78,10 @@
     box-sizing: content-box;
   }
   .spinner-wrapper {
+    margin-top: 100px;
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   </style>
