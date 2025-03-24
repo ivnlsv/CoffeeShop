@@ -1,6 +1,6 @@
 const ourBest = {
     state: {
-        ourbest: [ ],
+        ourbest: [],
     },
     getters: {
         getOurBest(state) {
