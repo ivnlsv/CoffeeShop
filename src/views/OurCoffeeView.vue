@@ -70,14 +70,12 @@
 					<div class="col-lg-10 offset-lg-1">
 						<div class="shop__wrapper" v-if="!isLoading">
 							<product-card
-							   
 								classItem="shop__item"
 								v-for="card in ourCoffee"
 								:key="card.id"
 								:card="card"
 								@onNavigate="navigate"
 							/>
-							
 						</div>
 						<spinner-component v-else></spinner-component>
 					</div>
@@ -92,6 +90,7 @@ import NavBarComponent from '@/components/NavBarComponent.vue';
 import ProductCard from '@/components/ProductCard.vue';
 import { navigate } from '@/mixins/navigate';
 import SpinnerComponent from '@/components/SpinnerComponent.vue';
+import { spinner } from '@/mixins/spinner';
 
 export default {
 	components: { NavBarComponent, ProductCard, HeaderTitle, SpinnerComponent },
@@ -109,20 +108,18 @@ export default {
 			return this.$store.getters['getIsLoading'];
 		},
 	},
-	
-	mixins: [navigate],
-	beforeMount() {
-		this.$store.dispatch('setIsLoading', true);
-		setTimeout(() => { 
-			fetch('http://localhost:3000/coffee')
-			.then((res) => res.json())
-			.then((data) => {
-				this.$store.dispatch('setCoffeeData', data);
-			});
-			this.$store.dispatch('setIsLoading', false);
-		}, 1500)
-		
-	},	
 
+	mixins: [navigate, spinner],
+	beforeMount() {
+		this.setLoading(true);
+		setTimeout(() => {
+			fetch('http://localhost:3000/coffee')
+				.then((res) => res.json())
+				.then((data) => {
+					this.$store.dispatch('setCoffeeData', data);
+					this.setLoading(false);
+				});
+		}, 1500);
+	},
 };
 </script>

@@ -103,14 +103,16 @@
 							<div class="checkbox-box">
 								<div class="checkbox-items">
 									<input
-									v-model="isChecked"
-									type="checkbox"
-									name="agreed"
-									id="agreed"
-								/>
-								<label for="agreed">Согласен с договором оферты</label>
+										v-model="isChecked"
+										type="checkbox"
+										name="agreed"
+										id="agreed"
+									/>
+									<label for="agreed">Согласен с договором оферты</label>
 								</div>
-								<span v-if="!isChecked" style="color: red;">Необходимо согласиться с договором оферты</span>
+								<span v-if="!isChecked" style="color: red"
+									>Необходимо согласиться с договором оферты</span
+								>
 							</div>
 
 							<div class="row">
@@ -168,20 +170,29 @@ export default {
 		async submit() {
 			const isFormCorrect = await this.v$.$validate();
 
-			if (!isFormCorrect || !this.isChecked) return
+			if (!isFormCorrect || !this.isChecked) return;
 			const message = {
 				name: this.name,
 				email: this.email,
 				phone: this.phone,
-				message: this.message
-			}
+				message: this.message,
+			};
 			fetch('http://localhost:3000/contacts', {
 				method: 'POST',
 				headers: {
-					'Content-type' : 'application/json'
+					'Content-type': 'application/json',
 				},
-				body: JSON.stringify(message)
-			}) 
+				body: JSON.stringify(message),
+			});
+			this.clearForm();
+		},
+		clearForm() {
+			this.name = '';
+			this.email = '';
+			this.phone = '';
+			this.message = '';
+			this.isChecked = true;
+			this.v$.$reset();
 		},
 	},
 };

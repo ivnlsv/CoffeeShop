@@ -69,6 +69,7 @@ import NavBarComponent from '@/components/NavBarComponent.vue';
 import ProductCard from '@/components/ProductCard.vue';
 import SpinnerComponent from '@/components/SpinnerComponent.vue';
 import { navigate } from '@/mixins/navigate';
+import { spinner } from '@/mixins/spinner';
 export default {
 	data() {
 		return {
@@ -85,21 +86,17 @@ export default {
 			return this.$store.getters['getIsLoading'];
 		},
 	},
-	mixins: [navigate],
+	mixins: [navigate, spinner],
 	beforeMount() {
-		this.$store.dispatch('setIsLoading', true);
-		setTimeout(() => { 
+		this.setLoading(true);
+		setTimeout(() => {
 			fetch('http://localhost:3000/goods')
-			.then((res) => res.json())
-			.then((data) => {
-				this.$store.dispatch('setGoodsData', data);
-			});
-			this.$store.dispatch('setIsLoading', false);
-		}, 1500)
-		
-	},	
-	mounted() {
-		
+				.then((res) => res.json())
+				.then((data) => {
+					this.$store.dispatch('setGoodsData', data);
+					this.setLoading(false);
+				});
+		}, 1500);
 	},
 };
 </script>
