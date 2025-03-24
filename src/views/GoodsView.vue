@@ -82,20 +82,18 @@ export default {
 		goodsItems() {
 			return this.$store.getters['getGoodsItems'];
 		},
-		isLoading() {
-			return this.$store.getters['getIsLoading'];
-		},
+		
 	},
 	mixins: [navigate, spinner],
-	beforeMount() {
+	mounted() {
 		this.setLoading(true);
 		setTimeout(() => {
 			fetch('http://localhost:3000/goods')
 				.then((res) => res.json())
 				.then((data) => {
 					this.$store.dispatch('setGoodsData', data);
-					this.setLoading(false);
 				});
+			this.setLoading(false);
 		}, 1500);
 	},
 };

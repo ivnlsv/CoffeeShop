@@ -52,16 +52,23 @@
 								type="text"
 								placeholder="start typing here..."
 								class="shop__search-input"
+								v-model="searchValue"
 							/>
 						</form>
 					</div>
 					<div class="col-lg-4">
 						<div class="shop__filter">
-							<div class="shop__filter-label">Or filter</div>
+							<div class="shop__filter-label" @click="resetFilters()">Or filter</div>
 							<div class="shop__filter-group">
-								<button class="shop__filter-btn">Brazil</button>
-								<button class="shop__filter-btn">Kenya</button>
-								<button class="shop__filter-btn">Columbia</button>
+								<button class="shop__filter-btn" @click="onSort('Brazil')">
+									Brazil
+								</button>
+								<button class="shop__filter-btn" @click="onSort('Kenya')">
+									Kenya
+								</button>
+								<button class="shop__filter-btn" @click="onSort('Columbia')">
+									Columbia
+								</button>
 							</div>
 						</div>
 					</div>
@@ -104,22 +111,38 @@ export default {
 		ourCoffee() {
 			return this.$store.getters['getOurCoffeeItems'];
 		},
-		isLoading() {
-			return this.$store.getters['getIsLoading'];
+		
+		searchValue: {
+			set(value) {
+				this.$store.dispatch('setSearchValue', value);
+			},
+			get() {
+				return this.$store.getters['getSearchValue'];
+			},
 		},
 	},
 
 	mixins: [navigate, spinner],
-	beforeMount() {
+	mounted() {
 		this.setLoading(true);
 		setTimeout(() => {
 			fetch('http://localhost:3000/coffee')
 				.then((res) => res.json())
 				.then((data) => {
 					this.$store.dispatch('setCoffeeData', data);
-					this.setLoading(false);
 				});
+			this.setLoading(false);
 		}, 1500);
+	},
+	methods: {
+	    onSort(value) {
+			this.$store.dispatch('setSortValue', value);
+			
+		},
+		resetFilters() {
+        this.$store.dispatch('setSearchValue', '');  
+        this.$store.dispatch('setSortValue', '');  
+    }
 	},
 };
 </script>
